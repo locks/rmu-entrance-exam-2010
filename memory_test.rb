@@ -1,11 +1,11 @@
-require "lib/ali_rizvi_fixed"
+require "lib/ricardo_mendes"
 
 start_time = Time.now
 
 puts "Starting Memory:"
 puts `ps -o rss= -p #{$$}`.to_i
 
-doc  = TextEditor::Document.new
+doc = TextEditor::Document.new
 msg = "X"
 
 [100, 1_000, 10_000, 100_000].each do |x|

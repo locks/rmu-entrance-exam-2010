@@ -9,18 +9,14 @@ module TextEditor
     attr_reader :contents
 
     def add_text(text, position=-1)
-      first = (position == -1 ? @contents.length : position)
-      
-      @op_stack.push [ [:insert, position, text], [:slice!, first, first+text.length] ]
+      @op_stack.push [:insert, position, text]
       @undo_stack = []
       
       @contents.insert(position, text)
     end
 
     def remove_text(first=0, last=@contents.length)
-      text = @contents.slice!(first...last)
-      
-      @op_stack.push [ [:slice!, first, last-1], [:insert, first, text] ]
+      @op_stack.push [:slice!, first, last-1]
       @undo_stack = []
     end
 
@@ -41,7 +37,7 @@ module TextEditor
     def content
       @contents = ''
       @op_stack.each do |op|
-        @contents.send( op[0][0], op[0][1], op[0][2] )
+        @contents.send( op[0], op[1], op[2] )
       end
       
       @contents

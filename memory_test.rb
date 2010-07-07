@@ -1,4 +1,4 @@
-require "lib/ricardo_mendes"
+require "lib/ricardo_mendes_old"
 
 start_time = Time.now
 

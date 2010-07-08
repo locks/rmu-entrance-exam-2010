@@ -5,7 +5,7 @@ require "rubygems"
 require "contest"
 $LOAD_PATH.unshift("#{File.dirname(__FILE__)}/../lib")
 
-require "ricardo_mendes"
+require "ricardo_mendes_refactor"
 
 class DocumentTest < Test::Unit::TestCase
 

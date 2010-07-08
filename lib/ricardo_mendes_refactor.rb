@@ -38,10 +38,7 @@ module TextEditor
     def contents
       @contents = ''
 
-      @op_stack.each do |op|
-        op[2].nil? ?
-          @contents.send( op[0], op[1] ) : @contents.send( op[0], op[1], op[2] )
-      end
+      @op_stack.each {|op| @contents.send( *op ) }
       
       @contents
     end
